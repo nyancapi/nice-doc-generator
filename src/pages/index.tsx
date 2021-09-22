@@ -13,11 +13,12 @@ const Home = () => {
   };
 
   const onClickButton = async () => {
-    setIsLoading(true);
     if (inputText === "") {
       alert("テキストを入力してください");
       return;
     }
+
+    setIsLoading(true);
     const result = await convertor(inputText);
     if (result !== null) {
       setOutputText(result);
