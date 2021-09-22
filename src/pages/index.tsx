@@ -72,6 +72,7 @@ const Home = () => {
                   value={inputText}
                   onChange={onChangeText}
                   placeholder="テキストを入力してください"
+                  maxLength={1000}
                   className={
                     "w-full h-60 rounded text-lg border-2 border-gray-200 focus:border-gray-300 lg:h-36"
                   }
@@ -94,7 +95,7 @@ const Home = () => {
           </div>
           <div className={"text-center mt-16 pb-32"}>
             <button
-              disabled={isLoading}
+              disabled={inputText.length > 1000 || isLoading}
               onClick={onClickButton}
               className={`text-xl btn-base w-40 h-14 transition transform-300 active:shadow-on ${
                 isLoading ? "shadow-on" : "shadow-off"
