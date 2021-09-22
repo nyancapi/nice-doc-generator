@@ -1,9 +1,9 @@
-import translate from "deepl";
+import axios, { AxiosRequestConfig } from "axios";
 
 export const convertor = async (text: string) => {
   var en, ja;
 
-  en = await tranlate(text, "EN");
+  en = await tranlate(text, "EN-US");
 
   if (typeof en === "string") {
     ja = await tranlate(en, "JA");
@@ -16,13 +16,16 @@ export const convertor = async (text: string) => {
   return null;
 };
 
-const tranlate = async (text: string, targetLang: translate.DeeplLanguages) => {
-  const result = await translate({
-    free_api: true,
-    text: text,
-    target_lang: targetLang,
-    auth_key: process.env.NEXT_PUBLIC_AUTH_KEY!,
-  })
+const tranlate = async (text: string, targetLang: string) => {
+  const baseURL = "https://api-free.deepl.com/v2/translate";
+
+  const reqOptions: AxiosRequestConfig = {
+    url: `${baseURL}?auth_key=${process.env.NEXT_PUBLIC_AUTH_KEY}&target_lang=${targetLang}&text=${text}`,
+    method: "POST",
+  };
+
+  const result = await axios
+    .request(reqOptions)
     .then((res) => {
       return res.data.translations[0].text;
     })
@@ -39,6 +42,5 @@ const tranlate = async (text: string, targetLang: translate.DeeplLanguages) => {
       console.log(error.config);
     });
 
-  console.log(result);
   return result;
 };
