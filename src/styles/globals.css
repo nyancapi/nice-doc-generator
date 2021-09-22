@@ -35,17 +35,20 @@ textarea {
   box-shadow: 6px 6px 12px #d5d5d5, -6px -6px 12px #ffffff;
 }
 
-.dot-text {
-  padding-top: 0.4em;
-  background-position: top left -4px;
-  background-repeat: repeat-x;
-  background-size: 1.3em 0.3em;
-  background-image: radial-gradient(
-    0.15em 0.15em at center center,
-    rgb(255, 200, 98),
-    rgb(255, 200, 98) 100%,
-    transparent
-  );
+.dot-text span {
+  position: relative;
+}
+
+.dot-text span::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background-color: rgb(255, 200, 98);
+  position: absolute;
+  top: -0.6rem;
+  left: 0.35em;
+  text-align: center;
 }
 
 .loader-wrap {
