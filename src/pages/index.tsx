@@ -42,20 +42,20 @@ const Home = () => {
         ) : null}
         <main className={"px-8 lg:px-16"}>
           <div className={"text-center mt-12"}>
-            <h1 className={"text-2xl hidden lg:block"}>
+            <h1 className={"text-2xl hidden dot-text lg:block"}>
               あなたの日本語を
-              <span className={"dot-text"}>い</span>
-              <span className={"dot-text"}>い</span>
-              <span className={"dot-text"}>感</span>
-              <span className={"dot-text"}>じ</span>
+              <span>い</span>
+              <span>い</span>
+              <span>感</span>
+              <span>じ</span>
               に変換します
             </h1>
-            <h1 className={"text-xl block lg:hidden"}>
+            <h1 className={"text-xl block dot-text lg:hidden"}>
               あなたの日本語を
-              <span className={"dot-text"}>い</span>
-              <span className={"dot-text"}>い</span>
-              <span className={"dot-text"}>感</span>
-              <span className={"dot-text"}>じ</span>
+              <span>い</span>
+              <span>い</span>
+              <span>感</span>
+              <span>じ</span>
               <br />
               に変換します
             </h1>
@@ -74,7 +74,7 @@ const Home = () => {
                   placeholder="テキストを入力してください"
                   maxLength={1000}
                   className={
-                    "w-full h-60 rounded text-lg border-2 border-gray-200 focus:border-gray-300 lg:h-36"
+                    "w-full h-60 rounded text-lg border-2 border-gray-200 focus:border-gray-300 lg:h-40"
                   }
                 ></textarea>
               </div>
@@ -87,7 +87,7 @@ const Home = () => {
                   placeholder="変換後のテキストはここに表示されます"
                   readOnly={true}
                   className={
-                    "w-full h-60 rounded text-lg border-2 border-gray-200 lg:h-36"
+                    "w-full h-60 rounded text-lg border-2 border-gray-200 lg:h-40"
                   }
                 ></textarea>
               </div>
@@ -97,7 +97,7 @@ const Home = () => {
             <button
               disabled={inputText.length > 1000 || isLoading}
               onClick={onClickButton}
-              className={`text-xl btn-base w-40 h-14 transition transform-300 active:shadow-on ${
+              className={`text-xl btn-base w-40 h-14 active:shadow-on ${
                 isLoading ? "shadow-on" : "shadow-off"
               }`}
             >
