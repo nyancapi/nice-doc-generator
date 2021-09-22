@@ -1,6 +1,37 @@
+import { ChangeEvent, useState } from "react";
+import { convertor } from "../libs/convertor";
+
 const Home = () => {
+  const [inputText, setInputText] = useState("");
+  const [outputText, setOutputText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setInputText(e.target.value);
+  };
+
+  const onClickButton = async () => {
+    setIsLoading(true);
+    if (inputText === "") {
+      alert("テキストを入力してください");
+      return;
+    }
+    const result = await convertor(inputText);
+    if (result !== null) {
+      setOutputText(result);
+    } else {
+      console.log("Error...");
+    }
+    setIsLoading(false);
+  };
+
   return (
     <div className={"relative min-h-screen text-gray-600 flex flex-col"}>
+      {isLoading ? (
+        <div className={"loader-wrap pointer-events-none"}>
+          <div className={"loader"}>Loading...</div>
+        </div>
+      ) : null}
       <main className={"px-8 lg:px-16"}>
         <div className={"text-center mt-12"}>
           <h1 className={"text-2xl"}>
@@ -8,7 +39,8 @@ const Home = () => {
             <span className={"dot-text"}>い</span>
             <span className={"dot-text"}>い</span>
             <span className={"dot-text"}>感</span>
-            <span className={"dot-text"}>じ</span>に変換します
+            <span className={"dot-text"}>じ</span>
+            に変換します
           </h1>
         </div>
         <div
@@ -20,6 +52,8 @@ const Home = () => {
             <h2 className={"text-2xl text-center font-semibold"}>Before</h2>
             <div className={"mt-4 p-6 text-box lg:p-12 lg:mt-8"}>
               <textarea
+                value={inputText}
+                onChange={onChangeText}
                 placeholder="テキストを入力してください"
                 className={
                   "w-full h-36 rounded text-lg border-2 border-gray-200 focus:border-gray-300"
@@ -31,6 +65,7 @@ const Home = () => {
             <h2 className={"text-2xl text-center font-semibold"}>After</h2>
             <div className={"mt-4 p-6 text-box lg:p-12 lg:mt-8"}>
               <textarea
+                value={outputText}
                 placeholder="変換後のテキストはここに表示されます"
                 readOnly={true}
                 className={
@@ -42,9 +77,11 @@ const Home = () => {
         </div>
         <div className={"text-center mt-16 pb-32"}>
           <button
-            className={
-              "text-xl btn-base w-40 h-14 shadow-off transition transform-300 active:shadow-on"
-            }
+            disabled={isLoading}
+            onClick={onClickButton}
+            className={`text-xl btn-base w-40 h-14 transition transform-300 active:shadow-on ${
+              isLoading ? "shadow-on" : "shadow-off"
+            }`}
           >
             変換
           </button>
