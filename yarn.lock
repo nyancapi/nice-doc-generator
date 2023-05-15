@@ -104,9 +104,9 @@
   version "13.3.1"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.3.1.tgz#589707043065f6b71d411ed9b8f1ffd057c0fd4a"
 
-"@next/eslint-plugin-next@13.4.1":
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-13.4.1.tgz#9c943ccd035f5f4b79da23911e08e18c24941bed"
+"@next/eslint-plugin-next@13.4.2":
+  version "13.4.2"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-13.4.2.tgz#ce32730d6282af3151a07de6e865397dc6d3dbdf"
   dependencies:
     glob "7.1.7"
 
@@ -698,11 +698,11 @@ escape-string-regexp@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
 
-eslint-config-next@13.4.1:
-  version "13.4.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-13.4.1.tgz#5f5e083fab9997752852ea40f5d233632d18f085"
+eslint-config-next@13.4.2:
+  version "13.4.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-13.4.2.tgz#6ee5c53b6f56bddd6346d14c22713b71da7e7b51"
   dependencies:
-    "@next/eslint-plugin-next" "13.4.1"
+    "@next/eslint-plugin-next" "13.4.2"
     "@rushstack/eslint-patch" "^1.1.3"
     "@typescript-eslint/parser" "^5.42.0"
     eslint-import-resolver-node "^0.3.6"
